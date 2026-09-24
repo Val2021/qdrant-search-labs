@@ -39,11 +39,11 @@ client = QdrantClient(
 
 points = []
 
-for document in documents:
+for point_id, document in enumerate(documents):
 
     points.append(
         models.PointStruct(
-            id=uuid4().hex,
+            id=point_id,
             vector={
                 "dense": models.Document(
                     text=document,

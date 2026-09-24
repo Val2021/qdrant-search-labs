@@ -22,8 +22,10 @@ DENSE_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 SPARSE_MODEL = "Qdrant/bm25"
 
 #QUERY = "docker installation"
-QUERY = "container engine"
+#QUERY = "container engine"
+QUERY =  "DKR-6638"
 #QUERY = "virtualization software"
+#QUERY = "Using Podman as a Docker alternative"
 ###############################################################
 # Connect
 ###############################################################

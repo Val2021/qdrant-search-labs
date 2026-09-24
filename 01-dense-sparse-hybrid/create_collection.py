@@ -34,8 +34,9 @@ client = QdrantClient(
 collections = client.get_collections().collections
 
 if any(collection.name == COLLECTION_NAME for collection in collections):
-    print(f"Collection '{COLLECTION_NAME}' already exists.")
-    raise SystemExit()
+    print(f"Collection '{COLLECTION_NAME}' already exists.Deleting it...")
+    client.delete_collection(collection_name=COLLECTION_NAME)
+    print(f"Collection '{COLLECTION_NAME}' deleted.")
 
 ###############################################################
 # Create Collection
