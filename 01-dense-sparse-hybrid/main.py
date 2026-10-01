@@ -23,7 +23,8 @@ SPARSE_MODEL = "Qdrant/bm25"
 
 #QUERY = "docker installation"
 #QUERY = "container engine"
-QUERY =  "DKR-6638"
+#QUERY =  "DKR-6637"
+QUERY = "virtualization software container"
 #QUERY = "virtualization software"
 #QUERY = "Using Podman as a Docker alternative"
 ###############################################################
@@ -98,8 +99,17 @@ def hybrid_search(query: str) -> list[models.ScoredPoint]:
                 limit=3,
             ),
         ],
-        query=models.FusionQuery(
-            fusion=models.Fusion.RRF
+        #query=models.FusionQuery(
+            #fusion=models.Fusion.RRF
+        #),
+        query=models.RrfQuery(
+            rrf=models.Rrf(
+                k=2,
+                # weights = [dense, sparse]
+                #weights=[1.0, 1.0], # original
+                #weights=[2.0, 1.0], # experiment
+                weights=[3.0, 1.0],  # experiment
+            )
         ),
         limit=3,
     )
