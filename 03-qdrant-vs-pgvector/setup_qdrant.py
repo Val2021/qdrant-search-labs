@@ -1,6 +1,8 @@
 from qdrant_client import QdrantClient
 from qdrant_client.models import (
     Distance,
+    HnswConfigDiff,
+    OptimizersConfigDiff,
     PayloadSchemaType,
     VectorParams,
 )
@@ -21,6 +23,14 @@ def setup_qdrant() -> None:
         vectors_config=VectorParams(
             size=384,
             distance=Distance.COSINE,
+        ),
+        hnsw_config=HnswConfigDiff(
+            m=16,
+            ef_construct=100,
+            full_scan_threshold=1000,
+        ),
+        optimizers_config=OptimizersConfigDiff(
+            indexing_threshold=1000,
         ),
     )
 
